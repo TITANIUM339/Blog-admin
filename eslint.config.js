@@ -1,8 +1,9 @@
 import js from "@eslint/js";
-import globals from "globals";
+import pluginQuery from "@tanstack/eslint-plugin-query";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
-import eslintConfigPrettier from "eslint-config-prettier/flat";
+import globals from "globals";
 
 export default [
     { ignores: ["dist"] },
@@ -31,5 +32,6 @@ export default [
             ],
         },
     },
+    ...pluginQuery.configs["flat/recommended"],
     eslintConfigPrettier,
 ];
