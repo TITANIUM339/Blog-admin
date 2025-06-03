@@ -20,7 +20,7 @@ export default function Root() {
                         {user ? (
                             <Link
                                 to="/log-out"
-                                className="flex items-center rounded-md border-2 border-teal-50 pt-1 pr-3 pb-1 pl-3 font-medium text-teal-50"
+                                className="rounded-md pt-1 pr-3 pb-1 pl-3 font-medium text-white transition-colors duration-200 hover:bg-[rgba(0,0,0,0.1)]"
                             >
                                 Log out
                             </Link>
@@ -28,13 +28,13 @@ export default function Root() {
                             <>
                                 <Link
                                     to="/log-in"
-                                    className="flex items-center rounded-md border-2 border-teal-50 pt-1 pr-3 pb-1 pl-3 font-medium text-teal-50"
+                                    className="rounded-md pt-1 pr-3 pb-1 pl-3 font-medium text-white transition-colors duration-200 hover:bg-[rgba(0,0,0,0.1)]"
                                 >
                                     Log in
                                 </Link>
                                 <Link
                                     to="/sign-up"
-                                    className="flex items-center rounded-md bg-teal-50 pt-1 pr-3 pb-1 pl-3 font-medium text-teal-700"
+                                    className="rounded-md bg-teal-50 pt-1 pr-3 pb-1 pl-3 font-medium text-teal-700 transition-colors duration-200 hover:bg-teal-100"
                                 >
                                     Sign up
                                 </Link>
