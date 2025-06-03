@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import { root } from "./lib/loaders";
 import Root from "./pages/Root";
 import "./styles/main.css";
+import Signup from "./pages/Signup";
+import { signupUser } from "./lib/actions";
 
 const client = new QueryClient();
 
@@ -13,6 +15,13 @@ const router = createBrowserRouter([
         path: "/",
         element: <Root />,
         loader: root(client),
+        children: [
+            {
+                path: "sign-up",
+                element: <Signup />,
+                action: signupUser(client),
+            },
+        ],
     },
 ]);
 
