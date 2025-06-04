@@ -18,7 +18,7 @@ export default function Signup() {
 
     return (
         <div className="flex h-full items-center justify-center">
-            <div className="grid-rows[min-content_1fr] grid shadow-lg">
+            <div className="grid-rows[min-content_1fr] grid w-full max-w-md shadow-lg">
                 <HeadingContainer>
                     <div className="pt-6 pr-2 pb-6 pl-2">
                         <h1 className="text-center text-xl font-medium text-teal-900">
@@ -31,53 +31,51 @@ export default function Signup() {
                     action="/sign-up"
                     className="flex flex-col gap-2 p-2"
                 >
-                    <div className="grid grid-cols-2 gap-2">
-                        <div className="flex flex-col gap-1">
-                            <label
-                                htmlFor={firstNameId}
-                                className="text-lg font-medium"
-                            >
-                                First name *
-                            </label>
-                            <input
-                                id={firstNameId}
-                                type="text"
-                                placeholder="John"
-                                autoComplete="given-name"
-                                autoCapitalize="on"
-                                name="firstName"
-                                required
-                                className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
-                            />
-                            {errorMessages.firstName && (
-                                <p className="text-red-600">
-                                    {errorMessages.firstName}
-                                </p>
-                            )}
-                        </div>
-                        <div className="flex flex-col gap-1">
-                            <label
-                                htmlFor={lastNameId}
-                                className="text-lg font-medium"
-                            >
-                                Last name *
-                            </label>
-                            <input
-                                id={lastNameId}
-                                type="text"
-                                placeholder="Smith"
-                                autoComplete="family-name"
-                                autoCapitalize="on"
-                                name="lastName"
-                                required
-                                className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
-                            />
-                            {errorMessages.lastName && (
-                                <p className="text-red-600">
-                                    {errorMessages.lastName}
-                                </p>
-                            )}
-                        </div>
+                    <div className="flex flex-col gap-1">
+                        <label
+                            htmlFor={firstNameId}
+                            className="text-lg font-medium"
+                        >
+                            First name *
+                        </label>
+                        <input
+                            id={firstNameId}
+                            type="text"
+                            placeholder="John"
+                            autoComplete="given-name"
+                            autoCapitalize="on"
+                            name="firstName"
+                            required
+                            className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
+                        />
+                        {errorMessages.firstName && (
+                            <p className="text-red-600">
+                                {errorMessages.firstName}
+                            </p>
+                        )}
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <label
+                            htmlFor={lastNameId}
+                            className="text-lg font-medium"
+                        >
+                            Last name *
+                        </label>
+                        <input
+                            id={lastNameId}
+                            type="text"
+                            placeholder="Smith"
+                            autoComplete="family-name"
+                            autoCapitalize="on"
+                            name="lastName"
+                            required
+                            className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
+                        />
+                        {errorMessages.lastName && (
+                            <p className="text-red-600">
+                                {errorMessages.lastName}
+                            </p>
+                        )}
                     </div>
                     <div className="flex flex-col gap-1">
                         <label
@@ -101,51 +99,49 @@ export default function Signup() {
                             </p>
                         )}
                     </div>
-                    <div className="grid grid-cols-2 gap-2">
-                        <div className="flex flex-col gap-1">
-                            <label
-                                htmlFor={passwordId}
-                                className="text-lg font-medium"
-                            >
-                                password *
-                            </label>
-                            <input
-                                id={passwordId}
-                                type="password"
-                                placeholder="********"
-                                autoComplete="new-password"
-                                name="password"
-                                required
-                                className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
-                            />
-                            {errorMessages.password && (
-                                <p className="text-red-600">
-                                    {errorMessages.password}
-                                </p>
-                            )}
-                        </div>
-                        <div className="flex flex-col gap-1">
-                            <label
-                                htmlFor={confirmPasswordId}
-                                className="text-lg font-medium"
-                            >
-                                Confirm password *
-                            </label>
-                            <input
-                                id={confirmPasswordId}
-                                type="password"
-                                placeholder="********"
-                                autoComplete="new-password"
-                                name="confirmPassword"
-                                required
-                                className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
-                            />
-                            {errorMessages.confirmPassword && (
-                                <p className="text-red-600">
-                                    {errorMessages.confirmPassword}
-                                </p>
-                            )}
-                        </div>
+                    <div className="flex flex-col gap-1">
+                        <label
+                            htmlFor={passwordId}
+                            className="text-lg font-medium"
+                        >
+                            password *
+                        </label>
+                        <input
+                            id={passwordId}
+                            type="password"
+                            placeholder="********"
+                            autoComplete="new-password"
+                            name="password"
+                            required
+                            className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
+                        />
+                        {errorMessages.password && (
+                            <p className="text-red-600">
+                                {errorMessages.password}
+                            </p>
+                        )}
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <label
+                            htmlFor={confirmPasswordId}
+                            className="text-lg font-medium"
+                        >
+                            Confirm password *
+                        </label>
+                        <input
+                            id={confirmPasswordId}
+                            type="password"
+                            placeholder="********"
+                            autoComplete="new-password"
+                            name="confirmPassword"
+                            required
+                            className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
+                        />
+                        {errorMessages.confirmPassword && (
+                            <p className="text-red-600">
+                                {errorMessages.confirmPassword}
+                            </p>
+                        )}
                     </div>
                     <p className="text-center">
                         Already have an account?{" "}
