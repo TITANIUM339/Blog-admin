@@ -75,3 +75,13 @@ export function loginUser(client) {
         return redirect("/");
     };
 }
+
+export function logoutUser(client) {
+    return () => {
+        jwt.set();
+
+        client.removeQueries({ queryKey: getUser.queryKey });
+
+        return redirect("/");
+    };
+}
