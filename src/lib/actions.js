@@ -41,3 +41,37 @@ export function signupUser(client) {
         return redirect("/");
     };
 }
+
+export function loginUser(client) {
+    return async ({ request }) => {
+        const formData = await request.formData();
+
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/log-in`, {
+            method: "post",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username: formData.get("username"),
+                password: formData.get("password"),
+            }),
+        });
+
+        if (response.status === 401) {
+            return true;
+        }
+
+        if (!response.ok) {
+            throw response;
+        }
+
+        const { token } = await response.json();
+
+        jwt.set(token);
+
+        client.removeQueries({ queryKey: getUser.queryKey });
+
+        return redirect("/");
+    };
+}
