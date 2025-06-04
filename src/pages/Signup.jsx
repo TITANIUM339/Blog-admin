@@ -1,6 +1,7 @@
 import { useId } from "react";
 import { Form, Link, useActionData } from "react-router";
 import Button from "../components/Button";
+import HeadingContainer from "../components/HeadingContainer";
 
 export default function Signup() {
     const firstNameId = useId();
@@ -18,21 +19,13 @@ export default function Signup() {
     return (
         <div className="flex h-full items-center justify-center">
             <div className="grid-rows[min-content_1fr] grid shadow-lg">
-                <div className="relative bg-teal-100 pt-6 pr-2 pb-6 pl-2">
-                    <h1 className="text-center text-xl font-medium text-teal-900">
-                        Sign up
-                    </h1>
-                    <div className="absolute bottom-0 left-0 grid h-[60%] w-[30%] grid-rows-3">
-                        <div className="w-[25%] origin-left animate-[scale_1s_ease-out] bg-teal-200"></div>
-                        <div className="w-[50%] origin-left animate-[scale_1s_ease-out] bg-teal-400"></div>
-                        <div className="w-full origin-left animate-[scale_1s_ease-out] bg-teal-600"></div>
+                <HeadingContainer>
+                    <div className="pt-6 pr-2 pb-6 pl-2">
+                        <h1 className="text-center text-xl font-medium text-teal-900">
+                            Sign up
+                        </h1>
                     </div>
-                    <div className="absolute top-0 right-0 grid h-[60%] w-[30%] grid-rows-3 justify-items-end">
-                        <div className="w-full origin-right animate-[scale_1s_ease-out] bg-teal-600"></div>
-                        <div className="w-[50%] origin-right animate-[scale_1s_ease-out] bg-teal-400"></div>
-                        <div className="w-[25%] origin-right animate-[scale_1s_ease-out] bg-teal-200"></div>
-                    </div>
-                </div>
+                </HeadingContainer>
                 <Form
                     method="post"
                     action="/sign-up"
