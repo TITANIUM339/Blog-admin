@@ -2,11 +2,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
+import { loginUser, signupUser } from "./lib/actions";
 import { root } from "./lib/loaders";
+import Login from "./pages/Login";
 import Root from "./pages/Root";
-import "./styles/main.css";
 import Signup from "./pages/Signup";
-import { signupUser } from "./lib/actions";
+import "./styles/main.css";
 
 const client = new QueryClient();
 
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
                 element: <Signup />,
                 action: signupUser(client),
             },
+            { path: "log-in", element: <Login />, action: loginUser(client) },
         ],
     },
 ]);
