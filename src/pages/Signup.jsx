@@ -1,5 +1,6 @@
 import { useId } from "react";
 import { Form, Link, useActionData } from "react-router";
+import Button from "../components/Button";
 
 export default function Signup() {
     const firstNameId = useId();
@@ -162,12 +163,7 @@ export default function Signup() {
                             Log in
                         </Link>
                     </p>
-                    <button
-                        type="submit"
-                        className="rounded-md bg-teal-50 pt-1 pr-3 pb-1 pl-3 font-medium text-teal-700 transition-colors duration-200 hover:cursor-pointer hover:bg-teal-100"
-                    >
-                        Sign up
-                    </button>
+                    <Button type="submit">Sign up</Button>
                 </Form>
             </div>
         </div>

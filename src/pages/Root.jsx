@@ -1,5 +1,6 @@
 import { BsGithub } from "react-icons/bs";
 import { Link, Outlet, useLoaderData } from "react-router";
+import Button from "../components/Button";
 
 export default function Root() {
     const user = useLoaderData();
@@ -18,26 +19,25 @@ export default function Root() {
                     </div>
                     <div className="flex gap-2">
                         {user ? (
-                            <Link
+                            <Button
+                                Component={Link}
                                 to="/log-out"
-                                className="rounded-md pt-1 pr-3 pb-1 pl-3 font-medium text-white transition-colors duration-200 hover:bg-[rgba(0,0,0,0.1)]"
+                                variant="secondary"
                             >
                                 Log out
-                            </Link>
+                            </Button>
                         ) : (
                             <>
-                                <Link
+                                <Button
+                                    Component={Link}
                                     to="/log-in"
-                                    className="rounded-md pt-1 pr-3 pb-1 pl-3 font-medium text-white transition-colors duration-200 hover:bg-[rgba(0,0,0,0.1)]"
+                                    variant="secondary"
                                 >
                                     Log in
-                                </Link>
-                                <Link
-                                    to="/sign-up"
-                                    className="rounded-md bg-teal-50 pt-1 pr-3 pb-1 pl-3 font-medium text-teal-700 transition-colors duration-200 hover:bg-teal-100"
-                                >
+                                </Button>
+                                <Button Component={Link} to="/sign-up">
                                     Sign up
-                                </Link>
+                                </Button>
                             </>
                         )}
                     </div>
