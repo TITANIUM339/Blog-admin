@@ -1,5 +1,5 @@
 import { BsGithub } from "react-icons/bs";
-import { Link, Outlet, useLoaderData } from "react-router";
+import { Form, Link, Outlet, useLoaderData } from "react-router";
 import Button from "../components/Button";
 
 export default function Root() {
@@ -19,13 +19,11 @@ export default function Root() {
                     </div>
                     <div className="flex gap-2">
                         {user ? (
-                            <Button
-                                Component={Link}
-                                to="/log-out"
-                                variant="secondary"
-                            >
-                                Log out
-                            </Button>
+                            <Form method="post" action="/log-out">
+                                <Button type="submit" variant="secondary">
+                                    Log out
+                                </Button>
+                            </Form>
                         ) : (
                             <>
                                 <Button
