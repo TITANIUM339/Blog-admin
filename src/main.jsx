@@ -4,6 +4,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { loginUser, logoutUser, signupUser } from "./lib/actions";
 import { root } from "./lib/loaders";
+import Error from "./pages/Error";
 import Login from "./pages/Login";
 import Root from "./pages/Root";
 import Signup from "./pages/Signup";
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
+        errorElement: <Error />,
         loader: root(client),
         children: [
             {
