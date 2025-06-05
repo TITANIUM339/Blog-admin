@@ -1,7 +1,8 @@
 import { useId } from "react";
-import { Form, Link, useActionData } from "react-router";
+import { Form, Link, useActionData, useNavigation } from "react-router";
 import Button from "../components/Button";
 import HeadingContainer from "../components/HeadingContainer";
+import Spinner from "../components/Spinner";
 
 export default function Signup() {
     const firstNameId = useId();
@@ -11,6 +12,8 @@ export default function Signup() {
     const confirmPasswordId = useId();
 
     const { errors } = useActionData() || {};
+
+    const navigation = useNavigation();
 
     const errorMessages = {};
 
@@ -152,7 +155,17 @@ export default function Signup() {
                             Log in
                         </Link>
                     </p>
-                    <Button type="submit">Sign up</Button>
+                    <Button
+                        className="flex justify-center"
+                        type="submit"
+                        disabled={navigation.state === "submitting"}
+                    >
+                        {navigation.state === "submitting" ? (
+                            <Spinner size={24} />
+                        ) : (
+                            "Sign up"
+                        )}
+                    </Button>
                 </Form>
             </div>
         </div>

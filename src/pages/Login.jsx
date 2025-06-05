@@ -1,13 +1,16 @@
 import { useId } from "react";
-import { Form, Link, useActionData } from "react-router";
+import { Form, Link, useActionData, useNavigation } from "react-router";
 import Button from "../components/Button";
 import HeadingContainer from "../components/HeadingContainer";
+import Spinner from "../components/Spinner";
 
 export default function Login() {
     const usernameId = useId();
     const passwordId = useId();
 
     const error = useActionData();
+
+    const navigation = useNavigation();
 
     return (
         <div className="flex h-full items-center justify-center">
@@ -77,7 +80,17 @@ export default function Login() {
                             Sign up
                         </Link>
                     </p>
-                    <Button type="submit">Log in</Button>
+                    <Button
+                        className="flex justify-center"
+                        type="submit"
+                        disabled={navigation.state === "submitting"}
+                    >
+                        {navigation.state === "submitting" ? (
+                            <Spinner size={24} />
+                        ) : (
+                            "Log in"
+                        )}
+                    </Button>
                 </Form>
             </div>
         </div>
