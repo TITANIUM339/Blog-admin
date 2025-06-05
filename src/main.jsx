@@ -8,7 +8,7 @@ import Error from "./pages/Error";
 import Login from "./pages/Login";
 import Root from "./pages/Root";
 import Signup from "./pages/Signup";
-import "./styles/main.css";
+import "./styles/style.css";
 
 const client = new QueryClient();
 
