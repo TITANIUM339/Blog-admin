@@ -18,6 +18,7 @@ const router = createBrowserRouter([
         element: <Root />,
         errorElement: <Error />,
         loader: root(client),
+        id: "root",
         children: [
             {
                 path: "sign-up",
