@@ -85,3 +85,36 @@ export function logoutUser(client) {
         return redirect("/");
     };
 }
+
+export function createPost(client) {
+    return async ({ request }) => {
+        const formData = await request.formData();
+
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/posts`, {
+            method: "post",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${jwt.get()}`,
+            },
+            body: JSON.stringify({
+                title: formData.get("title"),
+                thumbnail: formData.get("thumbnail"),
+                content: formData.get("content"),
+                published: formData.get("published") === "on",
+            }),
+        });
+
+        if (response.status === 400) {
+            return await response.json();
+        }
+
+        if (!response.ok) {
+            throw response;
+        }
+
+        client.invalidateQueries({ queryKey: ["posts"] });
+
+        return redirect("/");
+    };
+}
