@@ -41,7 +41,7 @@ export default function Login() {
                             autoComplete="username"
                             name="username"
                             required
-                            className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
+                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {error && (
                             <p className="text-red-600">
@@ -63,7 +63,7 @@ export default function Login() {
                             autoComplete="current-password"
                             name="password"
                             required
-                            className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
+                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {error && (
                             <p className="text-red-600">

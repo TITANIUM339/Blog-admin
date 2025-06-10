@@ -49,7 +49,7 @@ export default function Signup() {
                             autoCapitalize="on"
                             name="firstName"
                             required
-                            className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
+                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {errorMessages.firstName && (
                             <p className="text-red-600">
@@ -72,7 +72,7 @@ export default function Signup() {
                             autoCapitalize="on"
                             name="lastName"
                             required
-                            className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
+                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {errorMessages.lastName && (
                             <p className="text-red-600">
@@ -94,7 +94,7 @@ export default function Signup() {
                             autoComplete="username"
                             name="username"
                             required
-                            className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
+                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {errorMessages.username && (
                             <p className="text-red-600">
@@ -116,7 +116,7 @@ export default function Signup() {
                             autoComplete="new-password"
                             name="password"
                             required
-                            className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
+                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {errorMessages.password && (
                             <p className="text-red-600">
@@ -138,7 +138,7 @@ export default function Signup() {
                             autoComplete="new-password"
                             name="confirmPassword"
                             required
-                            className="rounded-md border-1 border-gray-300 p-1 outline-teal-700"
+                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {errorMessages.confirmPassword && (
                             <p className="text-red-600">
