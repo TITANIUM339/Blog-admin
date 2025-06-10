@@ -2,8 +2,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import { loginUser, logoutUser, signupUser } from "./lib/actions";
+import Protected from "./components/Protected";
+import { createPost, loginUser, logoutUser, signupUser } from "./lib/actions";
 import { root } from "./lib/loaders";
+import CreatePost from "./pages/CreatePost";
 import Error from "./pages/Error";
 import Login from "./pages/Login";
 import Root from "./pages/Root";
@@ -20,6 +22,15 @@ const router = createBrowserRouter([
         loader: root(client),
         id: "root",
         children: [
+            {
+                path: "create-post",
+                action: createPost(client),
+                element: (
+                    <Protected>
+                        <CreatePost />
+                    </Protected>
+                ),
+            },
             {
                 path: "sign-up",
                 element: <Signup />,
