@@ -7,6 +7,7 @@ import { createPost, loginUser, logoutUser, signupUser } from "./lib/actions";
 import { root } from "./lib/loaders";
 import CreatePost from "./pages/CreatePost";
 import Error from "./pages/Error";
+import Loading from "./pages/Loading";
 import Login from "./pages/Login";
 import Root from "./pages/Root";
 import Signup from "./pages/Signup";
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
         element: <Root />,
         errorElement: <Error />,
         loader: root(client),
+        hydrateFallbackElement: <Loading />,
         id: "root",
         children: [
             {
