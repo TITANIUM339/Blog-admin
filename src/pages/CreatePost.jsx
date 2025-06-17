@@ -3,6 +3,7 @@ import { Form, useActionData, useNavigation } from "react-router";
 import Button from "../components/Button";
 import HeadingContainer from "../components/HeadingContainer";
 import Spinner from "../components/Spinner";
+import TextEditor from "../components/TextEditor";
 
 export default function CreatePost() {
     const titleId = useId();
@@ -10,12 +11,11 @@ export default function CreatePost() {
     const contentId = useId();
     const publishedId = useId();
 
-    const { errors } = useActionData() || {};
-
     const navigation = useNavigation();
 
-    const errorMessages = {};
+    const { errors } = useActionData() || {};
 
+    const errorMessages = {};
     errors?.forEach((error) => (errorMessages[error.path] = error.msg));
 
     return (
@@ -83,13 +83,7 @@ export default function CreatePost() {
                         >
                             Content *
                         </label>
-                        <textarea
-                            id={contentId}
-                            name="content"
-                            rows={20}
-                            required
-                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
-                        ></textarea>
+                        <TextEditor id={contentId} textareaName="content" />
                         {errorMessages.content && (
                             <p className="text-red-600">
                                 {errorMessages.content}
