@@ -6,13 +6,13 @@ export default function Root() {
     const user = useLoaderData();
 
     return (
-        <div className="grid min-h-screen grid-rows-[min-content_1fr_min-content]">
+        <div className="grid min-h-screen grid-rows-[min-content_1fr_min-content] bg-gray-50 text-gray-800">
             <header className="bg-teal-800">
                 <div className="mr-auto ml-auto flex max-w-7xl items-center justify-between p-2">
                     <div>
                         <Link
                             to="/"
-                            className="text-2xl font-medium text-white"
+                            className="text-2xl font-medium text-gray-50"
                         >
                             Blog Admin
                         </Link>
@@ -20,7 +20,11 @@ export default function Root() {
                     <div className="flex gap-2">
                         {user ? (
                             <Form method="post" action="/log-out">
-                                <Button type="submit" variant="secondary">
+                                <Button
+                                    type="submit"
+                                    variant="secondary"
+                                    className="text-gray-50"
+                                >
                                     Log out
                                 </Button>
                             </Form>
@@ -30,6 +34,7 @@ export default function Root() {
                                     Component={Link}
                                     to="/log-in"
                                     variant="secondary"
+                                    className="text-gray-50"
                                 >
                                     Log in
                                 </Button>

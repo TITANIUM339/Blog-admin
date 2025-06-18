@@ -9,7 +9,7 @@ export default function Button({
         primary:
             "rounded-md bg-teal-50 pt-1 pr-3 pb-1 pl-3 font-medium text-teal-700 transition-colors duration-200 hover:not-disabled:cursor-pointer hover:not-disabled:bg-teal-100",
         secondary:
-            "rounded-md pt-1 pr-3 pb-1 pl-3 font-medium text-white transition-colors duration-200 hover:not-disabled:cursor-pointer hover:not-disabled:bg-[rgba(0,0,0,0.1)]",
+            "rounded-md pt-1 pr-3 pb-1 pl-3 font-medium transition-colors duration-200 hover:not-disabled:cursor-pointer hover:not-disabled:bg-[rgba(0,0,0,0.1)]",
     }[variant];
 
     return Component ? (
