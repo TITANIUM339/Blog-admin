@@ -23,7 +23,7 @@ export default function Root() {
                                 <Button
                                     type="submit"
                                     variant="secondary"
-                                    className="text-gray-50"
+                                    style={{ color: "var(--color-gray-50)" }}
                                 >
                                     Log out
                                 </Button>
@@ -34,7 +34,7 @@ export default function Root() {
                                     Component={Link}
                                     to="/log-in"
                                     variant="secondary"
-                                    className="text-gray-50"
+                                    style={{ color: "var(--color-gray-50)" }}
                                 >
                                     Log in
                                 </Button>

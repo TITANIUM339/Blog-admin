@@ -81,7 +81,7 @@ export default function Login() {
                         </Link>
                     </p>
                     <Button
-                        className="flex justify-center"
+                        style={{ display: "flex", justifyContent: "center" }}
                         type="submit"
                         disabled={navigation.state === "submitting"}
                     >
