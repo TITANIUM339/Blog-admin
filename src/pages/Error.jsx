@@ -6,7 +6,7 @@ export default function Error() {
 
     return (
         <div className="flex h-screen items-center justify-center">
-            <section className="flex flex-col items-center gap-4">
+            <section className="flex flex-col items-center gap-4 text-center">
                 <h1 className="text-3xl font-medium">
                     {error.status ? (
                         <>
