@@ -4,6 +4,8 @@ import Button from "../components/Button";
 export default function Error() {
     const error = useRouteError();
 
+    console.error(error);
+
     return (
         <div className="flex h-screen items-center justify-center">
             <section className="flex flex-col items-center gap-4 text-center">
