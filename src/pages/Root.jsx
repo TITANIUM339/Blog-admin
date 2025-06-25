@@ -1,7 +1,7 @@
 import { BsGithub } from "react-icons/bs";
 import { Form, Link, Outlet, useLoaderData } from "react-router";
-import Button from "../components/Button";
 import { ToastContainer } from "react-toastify";
+import Button from "../components/Button";
 
 export default function Root() {
     const user = useLoaderData();
