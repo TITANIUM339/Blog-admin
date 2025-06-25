@@ -101,9 +101,13 @@ export default function CreatePost() {
                     <Button
                         style={{ display: "flex", justifyContent: "center" }}
                         type="submit"
-                        disabled={navigation.state === "submitting"}
+                        disabled={
+                            navigation.state === "submitting" ||
+                            navigation.state === "loading"
+                        }
                     >
-                        {navigation.state === "submitting" ? (
+                        {navigation.state === "submitting" ||
+                        navigation.state === "loading" ? (
                             <Spinner size={24} />
                         ) : (
                             "Create"
