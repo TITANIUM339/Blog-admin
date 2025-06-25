@@ -1,6 +1,5 @@
 import { redirect } from "react-router";
 import jwt from "./jwt";
-import { getUser } from "./queries";
 
 export function signupUser(client) {
     return async ({ request }) => {
@@ -36,7 +35,7 @@ export function signupUser(client) {
 
         jwt.set(token);
 
-        client.removeQueries({ queryKey: getUser.queryKey });
+        client.removeQueries({ queryKey: ["user"] });
 
         return redirect("/");
     };
@@ -70,7 +69,7 @@ export function loginUser(client) {
 
         jwt.set(token);
 
-        client.removeQueries({ queryKey: getUser.queryKey });
+        client.removeQueries({ queryKey: ["user"] });
 
         return redirect("/");
     };
@@ -80,7 +79,7 @@ export function logoutUser(client) {
     return () => {
         jwt.set();
 
-        client.removeQueries({ queryKey: getUser.queryKey });
+        client.removeQueries({ queryKey: ["user"] });
 
         return redirect("/");
     };
@@ -113,7 +112,7 @@ export function createPost(client) {
             throw response;
         }
 
-        client.invalidateQueries({ queryKey: ["posts"] });
+        client.invalidateQueries({ queryKey: ["user", "posts"] });
 
         return redirect("/");
     };
