@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Protected from "./components/Protected";
 import { createPost, loginUser, logoutUser, signupUser } from "./lib/actions";
-import { myPosts, root } from "./lib/loaders";
+import { loadPosts, loadUser } from "./lib/loaders";
 import CreatePost from "./pages/CreatePost";
 import Error from "./pages/Error";
 import Loading from "./pages/Loading";
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Root />,
         errorElement: <Error />,
-        loader: root(client),
+        loader: loadUser(client),
         hydrateFallbackElement: <Loading />,
         id: "root",
         children: [
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
                         <MyPosts />
                     </Protected>
                 ),
-                loader: myPosts(client),
+                loader: loadPosts(client),
             },
             {
                 path: "create-post",
