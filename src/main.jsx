@@ -4,11 +4,12 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Protected from "./components/Protected";
 import { createPost, loginUser, logoutUser, signupUser } from "./lib/actions";
-import { root } from "./lib/loaders";
+import { myPosts, root } from "./lib/loaders";
 import CreatePost from "./pages/CreatePost";
 import Error from "./pages/Error";
 import Loading from "./pages/Loading";
 import Login from "./pages/Login";
+import MyPosts from "./pages/MyPosts";
 import Root from "./pages/Root";
 import Signup from "./pages/Signup";
 import "./styles/style.css";
@@ -24,6 +25,15 @@ const router = createBrowserRouter([
         hydrateFallbackElement: <Loading />,
         id: "root",
         children: [
+            {
+                index: true,
+                element: (
+                    <Protected>
+                        <MyPosts />
+                    </Protected>
+                ),
+                loader: myPosts(client),
+            },
             {
                 path: "create-post",
                 action: createPost(client),
