@@ -24,7 +24,7 @@ export default function CreatePost() {
                 <HeadingContainer>
                     <div className="pt-6 pr-2 pb-6 pl-2">
                         <h1 className="text-center text-xl font-medium text-teal-900">
-                            Create a New Post
+                            Create a new post
                         </h1>
                     </div>
                 </HeadingContainer>
@@ -99,7 +99,7 @@ export default function CreatePost() {
                         />
                     </div>
                     <Button
-                        className="flex justify-center"
+                        style={{ display: "flex", justifyContent: "center" }}
                         type="submit"
                         disabled={navigation.state === "submitting"}
                     >
