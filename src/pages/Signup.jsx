@@ -1,7 +1,9 @@
 import { useId } from "react";
 import { Form, Link, useActionData, useNavigation } from "react-router";
 import Button from "../components/Button";
-import HeadingContainer from "../components/HeadingContainer";
+import ErrorText from "../components/ErrorText";
+import FormContainer from "../components/FormContainer";
+import Input from "../components/Input";
 import Spinner from "../components/Spinner";
 
 export default function Signup() {
@@ -21,14 +23,7 @@ export default function Signup() {
 
     return (
         <div className="flex h-full items-center justify-center">
-            <div className="grid-rows[min-content_1fr] grid w-full max-w-md shadow-lg">
-                <HeadingContainer>
-                    <div className="pt-6 pr-2 pb-6 pl-2">
-                        <h1 className="text-center text-xl font-medium text-teal-900">
-                            Sign up
-                        </h1>
-                    </div>
-                </HeadingContainer>
+            <FormContainer title="Sign up">
                 <Form
                     method="post"
                     action="/sign-up"
@@ -41,7 +36,7 @@ export default function Signup() {
                         >
                             First name *
                         </label>
-                        <input
+                        <Input
                             id={firstNameId}
                             type="text"
                             placeholder="John"
@@ -49,12 +44,9 @@ export default function Signup() {
                             autoCapitalize="on"
                             name="firstName"
                             required
-                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {errorMessages.firstName && (
-                            <p className="text-red-600">
-                                {errorMessages.firstName}
-                            </p>
+                            <ErrorText>{errorMessages.firstName}</ErrorText>
                         )}
                     </div>
                     <div className="flex flex-col gap-1">
@@ -64,7 +56,7 @@ export default function Signup() {
                         >
                             Last name *
                         </label>
-                        <input
+                        <Input
                             id={lastNameId}
                             type="text"
                             placeholder="Smith"
@@ -72,12 +64,9 @@ export default function Signup() {
                             autoCapitalize="on"
                             name="lastName"
                             required
-                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {errorMessages.lastName && (
-                            <p className="text-red-600">
-                                {errorMessages.lastName}
-                            </p>
+                            <ErrorText>{errorMessages.lastName}</ErrorText>
                         )}
                     </div>
                     <div className="flex flex-col gap-1">
@@ -87,19 +76,16 @@ export default function Signup() {
                         >
                             Username *
                         </label>
-                        <input
+                        <Input
                             id={usernameId}
                             type="text"
                             placeholder="john"
                             autoComplete="username"
                             name="username"
                             required
-                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {errorMessages.username && (
-                            <p className="text-red-600">
-                                {errorMessages.username}
-                            </p>
+                            <ErrorText>{errorMessages.username}</ErrorText>
                         )}
                     </div>
                     <div className="flex flex-col gap-1">
@@ -109,19 +95,16 @@ export default function Signup() {
                         >
                             password *
                         </label>
-                        <input
+                        <Input
                             id={passwordId}
                             type="password"
                             placeholder="********"
                             autoComplete="new-password"
                             name="password"
                             required
-                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {errorMessages.password && (
-                            <p className="text-red-600">
-                                {errorMessages.password}
-                            </p>
+                            <ErrorText>{errorMessages.password}</ErrorText>
                         )}
                     </div>
                     <div className="flex flex-col gap-1">
@@ -131,19 +114,18 @@ export default function Signup() {
                         >
                             Confirm password *
                         </label>
-                        <input
+                        <Input
                             id={confirmPasswordId}
                             type="password"
                             placeholder="********"
                             autoComplete="new-password"
                             name="confirmPassword"
                             required
-                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {errorMessages.confirmPassword && (
-                            <p className="text-red-600">
+                            <ErrorText>
                                 {errorMessages.confirmPassword}
-                            </p>
+                            </ErrorText>
                         )}
                     </div>
                     <p className="text-center">
@@ -171,7 +153,7 @@ export default function Signup() {
                         )}
                     </Button>
                 </Form>
-            </div>
+            </FormContainer>
         </div>
     );
 }

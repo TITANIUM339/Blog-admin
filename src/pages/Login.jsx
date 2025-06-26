@@ -1,7 +1,9 @@
 import { useId } from "react";
 import { Form, Link, useActionData, useNavigation } from "react-router";
 import Button from "../components/Button";
-import HeadingContainer from "../components/HeadingContainer";
+import ErrorText from "../components/ErrorText";
+import FormContainer from "../components/FormContainer";
+import Input from "../components/Input";
 import Spinner from "../components/Spinner";
 
 export default function Login() {
@@ -14,14 +16,7 @@ export default function Login() {
 
     return (
         <div className="flex h-full items-center justify-center">
-            <div className="grid-rows[min-content_1fr] grid w-full max-w-md shadow-lg">
-                <HeadingContainer>
-                    <div className="pt-6 pr-2 pb-6 pl-2">
-                        <h1 className="text-center text-xl font-medium text-teal-900">
-                            Log in
-                        </h1>
-                    </div>
-                </HeadingContainer>
+            <FormContainer title="Log in">
                 <Form
                     method="post"
                     action="/log-in"
@@ -34,19 +29,18 @@ export default function Login() {
                         >
                             Username *
                         </label>
-                        <input
+                        <Input
                             id={usernameId}
                             type="text"
                             placeholder="john"
                             autoComplete="username"
                             name="username"
                             required
-                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {error && (
-                            <p className="text-red-600">
+                            <ErrorText>
                                 incorrect username or password
-                            </p>
+                            </ErrorText>
                         )}
                     </div>
                     <div className="flex flex-col gap-1">
@@ -56,19 +50,18 @@ export default function Login() {
                         >
                             password *
                         </label>
-                        <input
+                        <Input
                             id={passwordId}
                             type="password"
                             placeholder="********"
                             autoComplete="current-password"
                             name="password"
                             required
-                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {error && (
-                            <p className="text-red-600">
+                            <ErrorText>
                                 incorrect username or password
-                            </p>
+                            </ErrorText>
                         )}
                     </div>
                     <p className="text-center">
@@ -96,7 +89,7 @@ export default function Login() {
                         )}
                     </Button>
                 </Form>
-            </div>
+            </FormContainer>
         </div>
     );
 }

@@ -9,6 +9,7 @@ import {
 import { Link, useLoaderData, useNavigate, useNavigation } from "react-router";
 import { toast } from "react-toastify";
 import Button from "../components/Button";
+import Input from "../components/Input";
 import Spinner from "../components/Spinner";
 import Switch from "../components/Switch";
 import jwt from "../lib/jwt";
@@ -128,8 +129,8 @@ export default function MyPosts() {
                         <Spinner size={36} />
                     ) : null}
                 </div>
-                <select
-                    className="rounded-md border border-gray-300 p-1 outline-teal-700"
+                <Input
+                    element="select"
                     name="filter"
                     value={filter}
                     onChange={(event) => {
@@ -143,7 +144,7 @@ export default function MyPosts() {
                     <option value="all">All</option>
                     <option value="drafts">Drafts</option>
                     <option value="published">Published</option>
-                </select>
+                </Input>
             </div>
             {posts.length ? (
                 <ul className="mt-8 border border-gray-200 bg-white shadow">

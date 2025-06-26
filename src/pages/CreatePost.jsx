@@ -1,7 +1,9 @@
 import { useId } from "react";
 import { Form, useActionData, useNavigation } from "react-router";
 import Button from "../components/Button";
-import HeadingContainer from "../components/HeadingContainer";
+import ErrorText from "../components/ErrorText";
+import FormContainer from "../components/FormContainer";
+import Input from "../components/Input";
 import Spinner from "../components/Spinner";
 import TextEditor from "../components/TextEditor";
 
@@ -20,14 +22,7 @@ export default function CreatePost() {
 
     return (
         <div className="flex h-full items-center justify-center">
-            <div className="grid-rows[min-content_1fr] grid w-full max-w-2xl shadow-lg">
-                <HeadingContainer>
-                    <div className="pt-6 pr-2 pb-6 pl-2">
-                        <h1 className="text-center text-xl font-medium text-teal-900">
-                            Create a new post
-                        </h1>
-                    </div>
-                </HeadingContainer>
+            <FormContainer title="Create a new post" size="l">
                 <Form
                     method="post"
                     action="/create-post"
@@ -40,19 +35,16 @@ export default function CreatePost() {
                         >
                             Title *
                         </label>
-                        <input
+                        <Input
                             id={titleId}
                             type="text"
                             placeholder="My awesome post"
                             autoComplete="off"
                             name="title"
                             required
-                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {errorMessages.title && (
-                            <p className="text-red-600">
-                                {errorMessages.title}
-                            </p>
+                            <ErrorText>{errorMessages.title}</ErrorText>
                         )}
                     </div>
                     <div className="flex flex-col gap-1">
@@ -62,18 +54,15 @@ export default function CreatePost() {
                         >
                             Thumbnail URL
                         </label>
-                        <input
+                        <Input
                             id={thumbnailId}
                             type="url"
                             placeholder="https://example.com/thumbnail.jpg"
                             autoComplete="off"
                             name="thumbnail"
-                            className="rounded-md border border-gray-300 p-1 outline-teal-700"
                         />
                         {errorMessages.thumbnail && (
-                            <p className="text-red-600">
-                                {errorMessages.thumbnail}
-                            </p>
+                            <ErrorText>{errorMessages.thumbnail}</ErrorText>
                         )}
                     </div>
                     <div className="flex flex-col gap-1">
@@ -85,9 +74,7 @@ export default function CreatePost() {
                         </label>
                         <TextEditor id={contentId} textareaName="content" />
                         {errorMessages.content && (
-                            <p className="text-red-600">
-                                {errorMessages.content}
-                            </p>
+                            <ErrorText>{errorMessages.content}</ErrorText>
                         )}
                     </div>
                     <div className="flex items-center gap-1">
@@ -114,7 +101,7 @@ export default function CreatePost() {
                         )}
                     </Button>
                 </Form>
-            </div>
+            </FormContainer>
         </div>
     );
 }
