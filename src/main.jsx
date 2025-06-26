@@ -3,9 +3,16 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Protected from "./components/Protected";
-import { createPost, loginUser, logoutUser, signupUser } from "./lib/actions";
-import { loadPosts, loadUser } from "./lib/loaders";
+import {
+    createPost,
+    editPost,
+    loginUser,
+    logoutUser,
+    signupUser,
+} from "./lib/actions";
+import { loadPost, loadPosts, loadUser } from "./lib/loaders";
 import CreatePost from "./pages/CreatePost";
+import EditPost from "./pages/EditPost";
 import Error from "./pages/Error";
 import Loading from "./pages/Loading";
 import Login from "./pages/Login";
@@ -42,6 +49,16 @@ const router = createBrowserRouter([
                         <CreatePost />
                     </Protected>
                 ),
+            },
+            {
+                path: "edit-post/:postId",
+                element: (
+                    <Protected>
+                        <EditPost />
+                    </Protected>
+                ),
+                loader: loadPost(client),
+                action: editPost(client),
             },
             {
                 path: "sign-up",
