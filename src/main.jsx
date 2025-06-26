@@ -2,7 +2,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import Protected from "./components/Protected";
 import {
     createPost,
     editPost,
@@ -10,7 +9,7 @@ import {
     logoutUser,
     signupUser,
 } from "./lib/actions";
-import { loadPost, loadPosts, loadUser } from "./lib/loaders";
+import { loadPost, loadPosts, loadUser, protectedRoute } from "./lib/loaders";
 import CreatePost from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
 import Error from "./pages/Error";
@@ -28,35 +27,23 @@ const router = createBrowserRouter([
         path: "/",
         element: <Root />,
         errorElement: <Error />,
-        loader: loadUser(client),
         hydrateFallbackElement: <Loading />,
-        id: "root",
+        loader: loadUser(client),
         children: [
             {
                 index: true,
-                element: (
-                    <Protected>
-                        <MyPosts />
-                    </Protected>
-                ),
+                element: <MyPosts />,
                 loader: loadPosts(client),
             },
             {
                 path: "create-post",
+                element: <CreatePost />,
+                loader: protectedRoute(client),
                 action: createPost(client),
-                element: (
-                    <Protected>
-                        <CreatePost />
-                    </Protected>
-                ),
             },
             {
                 path: "edit-post/:postId",
-                element: (
-                    <Protected>
-                        <EditPost />
-                    </Protected>
-                ),
+                element: <EditPost />,
                 loader: loadPost(client),
                 action: editPost(client),
             },

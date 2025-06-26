@@ -1,3 +1,4 @@
+import { redirect } from "react-router";
 import { getPost, getPosts, getUser } from "./queries";
 
 export function loadUser(client) {
@@ -5,13 +6,37 @@ export function loadUser(client) {
 }
 
 export function loadPosts(client) {
-    return async ({ request }) =>
-        await client.fetchQuery(
+    return async ({ request }) => {
+        const user = await client.ensureQueryData(getUser());
+
+        if (!user) {
+            return redirect("/log-in");
+        }
+
+        return await client.fetchQuery(
             getPosts(new URL(request.url).searchParams.get("filter") || "all"),
         );
+    };
 }
 
 export function loadPost(client) {
-    return async ({ params }) =>
-        await client.fetchQuery(getPost(params.postId));
+    return async ({ params }) => {
+        const user = await client.ensureQueryData(getUser());
+
+        if (!user) {
+            return redirect("/log-in");
+        }
+
+        return await client.fetchQuery(getPost(params.postId));
+    };
+}
+
+export function protectedRoute(client) {
+    return async () => {
+        const user = await client.ensureQueryData(getUser());
+
+        if (!user) {
+            return redirect("/log-in");
+        }
+    };
 }

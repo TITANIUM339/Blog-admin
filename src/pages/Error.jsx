@@ -1,10 +1,15 @@
 import { Link, useRouteError } from "react-router";
 import Button from "../components/Button";
+import jwt from "../lib/jwt";
 
 export default function Error() {
     const error = useRouteError();
 
     console.error(error);
+
+    if (error.status === 401) {
+        jwt.set();
+    }
 
     return (
         <div className="flex h-screen items-center justify-center">
