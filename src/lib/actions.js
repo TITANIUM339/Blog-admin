@@ -1,4 +1,5 @@
 import { redirect } from "react-router";
+import { toast } from "react-toastify";
 import jwt from "./jwt";
 
 export function signupUser(client) {
@@ -28,7 +29,9 @@ export function signupUser(client) {
         }
 
         if (!response.ok) {
-            throw response;
+            toast("Could not sign up", { type: "error" });
+
+            return;
         }
 
         const { token } = await response.json();
@@ -62,7 +65,9 @@ export function loginUser(client) {
         }
 
         if (!response.ok) {
-            throw response;
+            toast("Could not log in", { type: "error" });
+
+            return;
         }
 
         const { token } = await response.json();
@@ -109,7 +114,9 @@ export function createPost(client) {
         }
 
         if (!response.ok) {
-            throw response;
+            toast("Could not create a new post", { type: "error" });
+
+            return;
         }
 
         client.invalidateQueries({ queryKey: ["user", "posts"] });
@@ -145,7 +152,9 @@ export function editPost(client) {
         }
 
         if (!response.ok) {
-            throw response;
+            toast("Could not save changes", { type: "error" });
+
+            return;
         }
 
         client.invalidateQueries({ queryKey: ["user", "posts"] });
