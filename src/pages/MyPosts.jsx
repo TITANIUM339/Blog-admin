@@ -153,15 +153,19 @@ export default function MyPosts() {
                             key={post.id}
                             className="grid grid-cols-[1fr_min-content] grid-rows-[min-content_min-content] gap-2 border-gray-200 p-4 not-last:border-b"
                         >
-                            <div className="overflow-hidden text-ellipsis">
+                            <div className="overflow-hidden">
                                 <Link
                                     to={`${import.meta.env.VITE_BLOG_URL}/posts/${post.id}`}
-                                    className="w flex w-max items-center gap-2 text-xl font-medium text-teal-700 hover:underline"
+                                    className="flex items-center gap-2 text-xl font-medium text-teal-700 hover:underline"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    {post.title}
-                                    <BsBoxArrowUpRight size={16} />
+                                    <span className="overflow-hidden text-ellipsis whitespace-nowrap">
+                                        {post.title}
+                                    </span>
+                                    <span>
+                                        <BsBoxArrowUpRight size={16} />
+                                    </span>
                                 </Link>
                             </div>
                             <div className="flex items-center justify-end gap-2">
@@ -170,6 +174,7 @@ export default function MyPosts() {
                                     style={{ padding: 6 }}
                                     Component={Link}
                                     to={`/edit-post/${post.id}`}
+                                    aria-label="Edit post"
                                 >
                                     <BsPencilSquare size={18} />
                                 </Button>
@@ -183,7 +188,7 @@ export default function MyPosts() {
                                     <BsTrash size={18} />
                                 </Button>
                             </div>
-                            <p className="w-max text-gray-500">
+                            <p className="text-gray-500">
                                 {new Date(post.createdAt).toLocaleDateString(
                                     "en-US",
                                     {
