@@ -36,7 +36,6 @@ import "tinymce/plugins/media";
 import "tinymce/plugins/nonbreaking";
 import "tinymce/plugins/pagebreak";
 import "tinymce/plugins/preview";
-import "tinymce/plugins/quickbars";
 import "tinymce/plugins/searchreplace";
 import "tinymce/plugins/table";
 import "tinymce/plugins/visualblocks";
@@ -76,7 +75,6 @@ export default function TextEditor({ init, ...props }) {
                     "nonbreaking",
                     "pagebreak",
                     "preview",
-                    "quickbars",
                     "searchreplace",
                     "table",
                     "visualblocks",
