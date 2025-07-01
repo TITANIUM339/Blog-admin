@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import {
     BsBoxArrowUpRight,
     BsPencilSquare,
@@ -99,7 +99,7 @@ export default function MyPosts() {
         },
         onMutate(post) {
             const updatedPosts = {
-                posts: [...posts.filter((oldPost) => oldPost.id !== post.id)],
+                posts: posts.filter((oldPost) => oldPost.id !== post.id),
             };
 
             client.setQueryData(["user", "posts"], updatedPosts);
@@ -118,7 +118,7 @@ export default function MyPosts() {
         },
     });
 
-    useEffect(() => setPosts(loaderData.posts), [loaderData.posts]);
+    useLayoutEffect(() => setPosts(loaderData.posts), [loaderData.posts]);
 
     return (
         <>
