@@ -38,6 +38,9 @@ jobs:
             - name: Install dependencies
               run: npm ci
             - name: Build
+              env:
+                VITE_API_URL: "https://blog-api-glsi.onrender.com"
+                VITE_BLOG_URL: "https://titanium339.github.io/Blog"
               run: npm run build
             - name: Setup Pages
               uses: actions/configure-pages@v5
