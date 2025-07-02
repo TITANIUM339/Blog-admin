@@ -22,41 +22,48 @@ import "./styles/style.css";
 
 const client = new QueryClient();
 
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Root />,
-        errorElement: <Error />,
-        hydrateFallbackElement: <Loading />,
-        loader: loadUser(client),
-        children: [
-            {
-                index: true,
-                element: <MyPosts />,
-                loader: loadPosts(client),
-            },
-            {
-                path: "create-post",
-                element: <CreatePost />,
-                loader: protectedRoute(client),
-                action: createPost(client),
-            },
-            {
-                path: "edit-post/:postId",
-                element: <EditPost />,
-                loader: loadPost(client),
-                action: editPost(client),
-            },
-            {
-                path: "sign-up",
-                element: <Signup />,
-                action: signupUser(client),
-            },
-            { path: "log-in", element: <Login />, action: loginUser(client) },
-            { path: "log-out", action: logoutUser(client) },
-        ],
-    },
-]);
+const router = createBrowserRouter(
+    [
+        {
+            path: "/",
+            element: <Root />,
+            errorElement: <Error />,
+            hydrateFallbackElement: <Loading />,
+            loader: loadUser(client),
+            children: [
+                {
+                    index: true,
+                    element: <MyPosts />,
+                    loader: loadPosts(client),
+                },
+                {
+                    path: "create-post",
+                    element: <CreatePost />,
+                    loader: protectedRoute(client),
+                    action: createPost(client),
+                },
+                {
+                    path: "edit-post/:postId",
+                    element: <EditPost />,
+                    loader: loadPost(client),
+                    action: editPost(client),
+                },
+                {
+                    path: "sign-up",
+                    element: <Signup />,
+                    action: signupUser(client),
+                },
+                {
+                    path: "log-in",
+                    element: <Login />,
+                    action: loginUser(client),
+                },
+                { path: "log-out", action: logoutUser(client) },
+            ],
+        },
+    ],
+    { basename: "/Blog-Admin/" },
+);
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
