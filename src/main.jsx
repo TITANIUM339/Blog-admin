@@ -62,7 +62,7 @@ const router = createBrowserRouter(
             ],
         },
     ],
-    { basename: "/Blog-Admin/" },
+    { basename: "/Blog-admin/" },
 );
 
 createRoot(document.getElementById("root")).render(
