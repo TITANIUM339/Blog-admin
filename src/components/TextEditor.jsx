@@ -94,6 +94,7 @@ export default function TextEditor({ init, ...props }) {
                     "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
                 promotion: false,
                 skin: "tinymce-5",
+                browser_spellcheck: true,
                 ...init,
             }}
             {...props}
