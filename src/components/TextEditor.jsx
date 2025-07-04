@@ -42,12 +42,6 @@ import "tinymce/plugins/visualblocks";
 import "tinymce/plugins/visualchars";
 import "tinymce/plugins/wordcount";
 
-/* content UI CSS is required */
-import "tinymce/skins/ui/oxide/content.js";
-
-/* The default content CSS can be changed or replaced with appropriate CSS for the editor content. */
-import "tinymce/skins/content/tinymce-5/content.js";
-
 export default function TextEditor({ init, ...props }) {
     return (
         <Editor
@@ -90,11 +84,12 @@ export default function TextEditor({ init, ...props }) {
                     "ltr rtl",
                     "outdent indent",
                 ].join(" | "),
-                content_style:
-                    "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
                 promotion: false,
                 skin: "tinymce-5",
                 browser_spellcheck: true,
+                content_css: "/Blog-admin/textEditor.css",
+                font_family_formats:
+                    "Sans Serif=sans-serif; Serif=serif; Monospace=monospace; Cursive=cursive; Fantasy=fantasy;",
                 ...init,
             }}
             {...props}
